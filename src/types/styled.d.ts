@@ -37,7 +37,9 @@ declare module "styled-components" {
       128: string;
       160: string;
       192: string;
+      280: string;
       320: string;
+      340: string;
       400: string;
     };
     breakpoints: {

@@ -36,7 +36,9 @@ export const theme: DefaultTheme = {
     128: "8rem",
     160: "10rem",
     192: "12rem",
+    280: "17.5rem",
     320: "20rem",
+    340: "22.5rem",
     400: "25rem",
   },
   breakpoints: {

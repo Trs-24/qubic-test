@@ -16,5 +16,5 @@ const StyledHeader = styled.header`
   height: ${({ theme }) => theme.sizes[72]};
 
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  padding: 2.5rem 0;
+  padding: ${({ theme }) => theme.sizes[40]} 0;
 `;

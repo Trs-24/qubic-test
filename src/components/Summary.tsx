@@ -86,13 +86,14 @@ export const Summary = () => {
 };
 
 const StyledTable = styled.table`
-  min-width: 337px;
-  padding: 20px;
-  border-radius: 12px;
+  min-width: ${({ theme }) => theme.sizes[340]};
+  padding: ${({ theme }) => theme.sizes[20]};
+  border-radius: ${({ theme }) => theme.sizes[12]};
   border: 1px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.tableBackground};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xxxxl}) {
+    min-width: ${({ theme }) => theme.sizes[280]};
     width: 100%;
   }
 `;
@@ -106,7 +107,7 @@ const StyledTableBody = styled.tbody`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
+  gap: ${({ theme }) => theme.sizes[16]};
   height: 100%;
 `;
 
