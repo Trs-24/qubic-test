@@ -1,54 +1,31 @@
 import IPO_BIDS_JSON_DATA from "../mock/ipoBids.json";
-import { Table } from "./Table";
-import { Bid, Column, SortSetting } from "../types";
-import styled from "styled-components";
+import { Bid, Column } from "../types";
+import Table from "./Table";
 
-const COLUMNS: Column[] = [
+const COLUMNS: Column<Bid>[] = [
   {
-    field: "positionIndex",
-    headerText: "Nr",
-    width: "10%",
-    minWidth: "70px",
-    textAlign: "Center" as const,
+    key: "positionIndex",
+    title: "Nr",
+    width: "8%",
+    minWidth: "60px",
+    align: "center",
   },
   {
-    field: "computorId",
-    headerText: "Id",
-    width: "70%",
+    key: "computorId",
+    title: "Id",
+    width: "72%",
     minWidth: "500px",
-    textAlign: "Left" as const,
+    align: "flex-start",
   },
   {
-    field: "price",
-    headerText: "Price (qus)",
+    key: "price",
+    title: "Price (QUBIC)",
     width: "20%",
     minWidth: "200px",
-    textAlign: "Right" as const,
-    format: "C0",
+    align: "flex-end",
   },
-];
-
-const SORT_SETTINGS: SortSetting[] = [
-  { field: "price", direction: "Descending" },
 ];
 
 export const WinningBids = () => {
-  return (
-    <WinningBidswrapper>
-      <Table<Bid>
-        title="Winning Bids"
-        dataSource={IPO_BIDS_JSON_DATA.bids}
-        columns={COLUMNS}
-        sortSettings={SORT_SETTINGS}
-      />
-    </WinningBidswrapper>
-  );
+  return <Table<Bid> dataSource={IPO_BIDS_JSON_DATA.bids} columns={COLUMNS} />;
 };
-
-const WinningBidswrapper = styled.div`
-  @media (max-width: ${({ theme }) => theme.breakpoints.xxl}) {
-    padding-left: ${({ theme }) => theme.sizes[16]};
-    padding-right: ${({ theme }) => theme.sizes[16]};
-    padding-bottom: ${({ theme }) => theme.sizes[40]};
-  }
-`;

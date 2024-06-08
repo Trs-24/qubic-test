@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import LOGO from "../assets/logo.png";
+import { Logo } from "./Logo";
 
 export const Header = () => {
   return (
     <StyledHeader>
-      <StyledImage src={LOGO} alt="logo" />
+      <Logo />
     </StyledHeader>
   );
 };
@@ -13,11 +13,8 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: ${({ theme }) => theme.sizes[72]};
 
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   padding: 2.5rem 0;
-`;
-
-const StyledImage = styled.img`
-  width: 12.5rem;
 `;

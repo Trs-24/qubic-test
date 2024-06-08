@@ -13,29 +13,18 @@ export interface Bid {
   positionIndex: number;
 }
 
-export type Column = {
-  field: string;
-  headerText: string;
-  width?: string | number;
-  textAlign: "Left" | "Right" | "Center";
-  allowResizing?: boolean;
-  minWidth?: string | number;
-  format?: string;
-};
-
-export type SortSetting = {
-  field: string;
-  direction: "Ascending" | "Descending";
-};
-
-export type FilterSetting = {
-  type: "Excel" | "Menu" | "CheckBox";
-  ignoreAccent: boolean;
-};
-
-export type MappedValues = {
+export type WinningId = {
   computerId: string;
-  averagePrice: number;
   numberOfShares: number;
   totalPrice: number;
+  averagePrice: number;
+};
+
+export type Column<T> = {
+  title: string;
+  key: keyof T;
+  width: string;
+  minWidth?: string;
+  align?: "flex-start" | "flex-end" | "center";
+  isSeparatedByCommas?: boolean;
 };

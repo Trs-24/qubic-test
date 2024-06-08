@@ -1,7 +1,7 @@
-import { IpoBids, MappedValues } from "../types";
+import { IpoBids, WinningId } from "../types";
 
 export const groupBidsByComputerId = (data: IpoBids) => {
-  const groupedBids: { [key: string]: MappedValues } = {};
+  const groupedBids: { [key: string]: WinningId } = {};
 
   data.bids.forEach((bid) => {
     const computerId = bid.computorId;
@@ -25,10 +25,11 @@ export const groupBidsByComputerId = (data: IpoBids) => {
   return Object.values(groupedBids);
 };
 
-const formatNumber = (num: number) => separateWithCommas(Math.floor(num));
+const formatNumber = (num: number) =>
+  separateWithCommas(Math.floor(num).toString());
 
-const separateWithCommas = (num: number) =>
-  num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export const separateWithCommas = (numString: string) =>
+  numString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 export const calculateSummaryData = (data: IpoBids) => {
   const totalBidValue = data.bids.reduce((sum, bid) => sum + bid.price, 0);
@@ -43,11 +44,11 @@ export const calculateSummaryData = (data: IpoBids) => {
     tick: data.tick,
     contractIndex: data.contractIndex,
     totalBidValue: formatNumber(totalBidValue),
-    percentOfSupply,
+    percentOfSupply: percentOfSupply.toFixed(2) + "%",
     totalBidders,
     avgSharePrice: formatNumber(avgSharePrice),
     maxSharePrice: formatNumber(maxSharePrice),
     minSharePrice: formatNumber(minSharePrice),
-    estimatedBurn,
+    estimatedBurn: formatNumber(estimatedBurn),
   };
 };

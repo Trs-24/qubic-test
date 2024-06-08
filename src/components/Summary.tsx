@@ -1,6 +1,7 @@
 import { calculateSummaryData } from "../utils/helpers";
 import IPO_BIDS_JSON_DATA from "../mock/ipoBids.json";
 import styled from "styled-components";
+import { Divider } from "./Divider";
 
 const summaryData = calculateSummaryData(IPO_BIDS_JSON_DATA);
 
@@ -10,100 +11,86 @@ export const Summary = () => {
       <StyledH2>Summary for MLM</StyledH2>
 
       <StyledTable>
-        <tbody>
+        <StyledTableBody>
           <StyledTableRow>
             <StyledTd>
-              <b>Contract Index</b>
-            </StyledTd>
-
-            <StyledTd>{summaryData.contractIndex}</StyledTd>
-          </StyledTableRow>
-
-          <StyledTableRow>
-            <StyledTd>
-              <b>Tick</b>
-            </StyledTd>
-
-            <StyledTd>{summaryData.tick}</StyledTd>
-          </StyledTableRow>
-
-          <StyledTableRow>
-            <StyledTd>&nbsp;</StyledTd>
-
-            <StyledTd></StyledTd>
-          </StyledTableRow>
-
-          <StyledTopRow>
-            <StyledTd>
-              <b>Total Bid Value</b>
+              <span>Total Bid Value</span>
             </StyledTd>
 
             <StyledTd>{summaryData.totalBidValue}</StyledTd>
-          </StyledTopRow>
+          </StyledTableRow>
 
-          <StyledBottomRow>
+          <StyledTableRow>
             <StyledTd>
-              <b>% of Supply</b>
+              <span>% of Supply</span>
             </StyledTd>
 
             <StyledTd>{summaryData.percentOfSupply}</StyledTd>
-          </StyledBottomRow>
+          </StyledTableRow>
 
-          <StyledBottomRow>
+          <StyledTableRow>
             <StyledTd>
-              <b>Total Bidders</b>
+              <span>Total Bidders</span>
             </StyledTd>
 
             <StyledTd>{summaryData.totalBidders}</StyledTd>
-          </StyledBottomRow>
+          </StyledTableRow>
 
-          <StyledMidRow>
+          <Divider />
+
+          <StyledTableRow>
             <StyledTd>
-              <b>Avg Share Price</b>
+              <span>Avg Share Price</span>
             </StyledTd>
 
             <StyledTd>{summaryData.avgSharePrice}</StyledTd>
-          </StyledMidRow>
+          </StyledTableRow>
 
-          <StyledMidRow>
+          <StyledTableRow>
             <StyledTd>
-              <b>Max Share Price</b>
+              <span>Max Share Price</span>
             </StyledTd>
 
             <StyledTd>{summaryData.maxSharePrice}</StyledTd>
-          </StyledMidRow>
+          </StyledTableRow>
 
-          <StyledMidRow>
+          <StyledTableRow>
             <StyledTd>
-              <b>Min Share Price</b>
+              <span>Min Share Price</span>
             </StyledTd>
 
             <StyledTd>{summaryData.minSharePrice}</StyledTd>
-          </StyledMidRow>
+          </StyledTableRow>
 
-          <StyledTopRow>
+          <Divider />
+
+          <StyledTableRow>
             <StyledTd>
-              <b>Estimated Burn</b>
+              <span>Estimated Burn</span>
             </StyledTd>
 
             <StyledTd>{summaryData.estimatedBurn}</StyledTd>
-          </StyledTopRow>
+          </StyledTableRow>
 
-          <StyledBottomRow>
+          <StyledTableRow>
             <StyledTd>
-              <b>% of Supply</b>
+              <span>% of Supply</span>
             </StyledTd>
 
             <StyledTd>0.2%</StyledTd>
-          </StyledBottomRow>
-        </tbody>
+          </StyledTableRow>
+        </StyledTableBody>
       </StyledTable>
     </div>
   );
 };
 
 const StyledTable = styled.table`
-  width: ${({ theme }) => theme.sizes[320]};
+  min-width: 337px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.tableBackground};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xxxxl}) {
     width: 100%;
@@ -115,35 +102,31 @@ const StyledTableRow = styled.tr`
   justify-content: space-between;
 `;
 
-const StyledTopRow = styled(StyledTableRow)`
-  border-top: 1px solid ${({ theme }) => theme.colors.border};
-  border-left: 1px solid ${({ theme }) => theme.colors.border};
-  border-right: 1px solid ${({ theme }) => theme.colors.border};
-`;
-
-const StyledBottomRow = styled(StyledTableRow)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-  border-left: 1px solid ${({ theme }) => theme.colors.border};
-  border-right: 1px solid ${({ theme }) => theme.colors.border};
-`;
-
-const StyledMidRow = styled(StyledTableRow)`
-  border-left: 1px solid ${({ theme }) => theme.colors.border};
-  border-right: 1px solid ${({ theme }) => theme.colors.border};
+const StyledTableBody = styled.tbody`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
 `;
 
 const StyledTd = styled.td`
   text-align: left;
   padding: ${({ theme }) => theme.sizes[4]};
-  color: ${({ theme }) => theme.colors.text} !important;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.sizes[14]};
+  font-weight: 500;
 
-  b {
-    color: ${({ theme }) => theme.colors.primary} !important;
+  span {
+    color: ${({ theme }) => theme.colors.textSecondary};
+    font-size: ${({ theme }) => theme.sizes[14]};
+    font-weight: 400;
   }
 `;
 
 const StyledH2 = styled.h2`
-  color: ${({ theme }) => theme.colors.text} !important;
-
-  padding-bottom: ${({ theme }) => theme.sizes[24]};
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.sizes[22]};
+  font-weight: 500;
+  margin-bottom: ${({ theme }) => theme.sizes[20]};
 `;
