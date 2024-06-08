@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/qubic-test/static/css/main.f756ca44.css",
-    "main.js": "/qubic-test/static/js/main.92d2c15e.js",
+    "main.js": "/qubic-test/static/js/main.20b12aad.js",
     "index.html": "/qubic-test/index.html",
     "main.f756ca44.css.map": "/qubic-test/static/css/main.f756ca44.css.map",
-    "main.92d2c15e.js.map": "/qubic-test/static/js/main.92d2c15e.js.map"
+    "main.20b12aad.js.map": "/qubic-test/static/js/main.20b12aad.js.map"
   },
   "entrypoints": [
     "static/css/main.f756ca44.css",
-    "static/js/main.92d2c15e.js"
+    "static/js/main.20b12aad.js"
   ]
 }
